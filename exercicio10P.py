@@ -1,0 +1,19 @@
+import requests
+import json
+
+url = "https://economia.awesomeapi.com.br/json/last/USD-BRL"
+
+try:
+    resposta = requests.get(url)
+    resposta.raise_for_status()  # Levanta um erro para códigos de status HTTP ruins (4xx ou 5xx)
+
+    dados = resposta.json()
+    cotacao = float(dados['USDBRL']['bid'])
+    
+    print(f"A cotação do dólar hoje é: R$ {cotacao:.2f}")
+except requests.exceptions.RequestException as e:
+    print(f"Erro ao conectar com a API: {e}")
+except (KeyError, ValueError) as e:
+    print(f"Erro ao processar os dados da API: {e}")
+except Exception as e:
+    print(f"Ocorreu um erro inesperado: {e}")
