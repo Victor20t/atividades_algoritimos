@@ -49,3 +49,6 @@ if trianguloSorN(lista):
     print(f"É um triângulo do tipo: {tipo_triangulo(lista)}")
 else:
     print("Os números não formam um triângulo.")
+
+
+"."
